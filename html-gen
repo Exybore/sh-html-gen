@@ -1,0 +1,37 @@
+if [ -z $1 ]; then
+  echo "Error : invalid argument number"
+else
+  if [ -z $2 ]; then
+    locale="en"
+    title="HTML page"
+  else
+    if [ $2 = "fr" ]; then
+      locale="fr"
+      title="Page HTML"
+    else
+      locale="en"
+      title="HTML page"
+    fi
+  fi
+  echo "<!--
+  HTML generator 0.2 - Exybore
+  https://github.com/Exybore/sh-html-gen
+-->
+<!DOCTYPE html>
+<html lang=\"$locale\" dir=\"ltr\">
+  <head>
+    <title>$title</title>
+    <meta charset=\"UTF-8\"/>
+    <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
+    <meta property=\"og:title\" content=\"$title\"/>
+    <meta property=\"og:description\" content=\"...\" />
+    <meta property=\"og:url\" content=\"...\" />
+    <meta name=\"author\" content=\"...\" />
+  </head>
+  <body>
+
+  </body>
+</html>" >> $1
+  echo "File auto-generated in $1"
+fi
